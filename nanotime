@@ -1,0 +1,42 @@
+public class StringPerformanceLab {
+    public static void main(String[] args) {
+
+        int n = 2026; // numbers to append
+
+
+        long startString = System.nanoTime();
+
+        String str = "UTSAV";
+        for (int i = 1; i <= n; i++) {
+            str = str + "_" + i;  // creates new String every time
+        }
+
+        long endString = System.nanoTime();
+        System.out.println("String final length: " + str.length());
+        System.out.println("Execution time (String): " + (endString - startString) + " ns");
+
+
+        long startBuffer = System.nanoTime();
+
+        StringBuffer sb = new StringBuffer("UTSAV");
+        for (int i = 1; i <= n; i++) {
+            sb.append("_").append(i); // modifies original object
+        }
+
+        long endBuffer = System.nanoTime();
+        System.out.println("StringBuffer final length: " + sb.length());
+        System.out.println("Execution time (StringBuffer): " + (endBuffer - startBuffer) + " ns");
+
+       
+        long startBuilder = System.nanoTime();
+
+        StringBuilder sbuilder = new StringBuilder("UTSAV");
+        for (int i = 1; i <= n; i++) {
+            sbuilder.append("_").append(i); // modifies original object
+        }
+
+        long endBuilder = System.nanoTime();
+        System.out.println("StringBuilder final length: " + sbuilder.length());
+        System.out.println("Execution time (StringBuilder): " + (endBuilder - startBuilder) + " ns");
+    }
+}
